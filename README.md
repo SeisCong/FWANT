@@ -1,2 +1,2 @@
 # FullWaveformTomography
-The codes for full-waveform tomography will be maintenance by UMass and URI seismology groups
+The codes of full-waveform tomography was orignially developed by Dr.Yang Shen and his seismology groups in URI. The codes will be maintenance by both URI and UMass seismology groups in the future.
