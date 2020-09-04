@@ -1,0 +1,222 @@
+#******************************************************************************#
+#*          Makefile of FFTomo SI-kernel code for FD3Dspher package           *#
+#*                                                                            *#
+#*            Author: Wei ZHANG     Email: zhangwei.zw@gmail.com              *#
+#*                       Copyright (C) 2008 Wei ZHANG                         *#
+#******************************************************************************#
+
+# $Date: 2009-01-14 21:13:32 -0500 (Wed, 14 Jan 2009) $
+# $Revision: 52 $
+# $LastChangedBy: zhangw $
+
+#######################################################################
+#                   source files and target names                     #
+#######################################################################
+FPPDIRKER := ./srcF.kernel
+
+SRC_KER_PAIR_FPP := SI_ker_pair.F90
+SRC_KER_PAIR := SI_ker_pair.f90
+EXE_KER_PAIR := SI_ker_pair
+OBJ_KER_PAIR := $(foreach file,$(SRC_KER_PAIR),$(OBJDIR)/$(file:.f90=.o))
+SRC_KER_PAIR_MPI := SI_ker_pair_mpi.f90
+EXE_KER_PAIR_MPI := SI_ker_pair_mpi
+OBJ_KER_PAIR_MPI := $(foreach file,$(SRC_KER_PAIR_MPI),$(OBJDIR)/$(file:.f90=.o))
+
+SRC_KER_STA_FPP := SI_ker_sta.F90
+SRC_KER_STA := SI_ker_sta.f90
+EXE_KER_STA := SI_ker_sta
+OBJ_KER_STA := $(foreach file,$(SRC_KER_STA),$(OBJDIR)/$(file:.f90=.o))
+SRC_KER_STA_MPI := SI_ker_sta_mpi.f90
+EXE_KER_STA_MPI := SI_ker_sta_mpi
+OBJ_KER_STA_MPI := $(foreach file,$(SRC_KER_STA_MPI),$(OBJDIR)/$(file:.f90=.o))
+
+SRC_KER_EQ_FPP := SI_ker_EQ.F90
+SRC_KER_EQ := SI_ker_EQ.f90
+EXE_KER_EQ := SI_ker_EQ
+OBJ_KER_EQ := $(foreach file,$(SRC_KER_EQ),$(OBJDIR)/$(file:.f90=.o))
+SRC_KER_EQ_MPI := SI_ker_EQ_mpi.f90
+EXE_KER_EQ_MPI := SI_ker_EQ_mpi
+OBJ_KER_EQ_MPI := $(foreach file,$(SRC_KER_EQ_MPI),$(OBJDIR)/$(file:.f90=.o))
+
+SRC_KER_STA_RHO_FPP := SI_ker_sta_rho.F90
+SRC_KER_STA_RHO := SI_ker_sta_rho.f90
+EXE_KER_STA_RHO := SI_ker_sta_rho
+OBJ_KER_STA_RHO := $(foreach file,$(SRC_KER_STA_RHO),$(OBJDIR)/$(file:.f90=.o))
+SRC_KER_STA_RHO_MPI := SI_ker_sta_rho_mpi.f90
+EXE_KER_STA_RHO_MPI := SI_ker_sta_rho_mpi
+OBJ_KER_STA_RHO_MPI := $(foreach file,$(SRC_KER_STA_RHO_MPI),$(OBJDIR)/$(file:.f90=.o))
+
+SRC_KER_STA_LAMU_FPP := SI_ker_sta_lamu.F90
+SRC_KER_STA_LAMU := SI_ker_sta_lamu.f90
+EXE_KER_STA_LAMU := SI_ker_sta_lamu
+OBJ_KER_STA_LAMU := $(foreach file,$(SRC_KER_STA_LAMU),$(OBJDIR)/$(file:.f90=.o))
+SRC_KER_STA_LAMU_MPI := SI_ker_sta_lamu_mpi.f90
+EXE_KER_STA_LAMU_MPI := SI_ker_sta_lamu_mpi
+OBJ_KER_STA_LAMU_MPI := $(foreach file,$(SRC_KER_STA_LAMU_MPI),$(OBJDIR)/$(file:.f90=.o))
+
+SRC_KER2INFO_FPP := SI_ker2info.F90
+SRC_KER2INFO := SI_ker2info.f90
+EXE_KER2INFO := SI_ker2info
+OBJ_KER2INFO := $(foreach file,$(SRC_KER2INFO),$(OBJDIR)/$(file:.f90=.o))
+SRC_KER2INFO_MPI := SI_ker2info_mpi.f90
+EXE_KER2INFO_MPI := SI_ker2info_mpi
+OBJ_KER2INFO_MPI := $(foreach file,$(SRC_KER2INFO_MPI),$(OBJDIR)/$(file:.f90=.o))
+
+SRC_KER2ASSM_FPP := SI_ker2assm.F90
+SRC_KER2ASSM := SI_ker2assm.f90
+EXE_KER2ASSM := SI_ker2assm
+OBJ_KER2ASSM := $(foreach file,$(SRC_KER2ASSM),$(OBJDIR)/$(file:.f90=.o))
+SRC_KER2ASSM_MPI := SI_ker2assm_mpi.f90
+EXE_KER2ASSM_MPI := SI_ker2assm_mpi
+OBJ_KER2ASSM_MPI := $(foreach file,$(SRC_KER2ASSM_MPI),$(OBJDIR)/$(file:.f90=.o))
+
+SRC_KER_LAMU2ASSM_FPP := SI_ker_lamu2assm.F90
+SRC_KER_LAMU2ASSM := SI_ker_lamu2assm.f90
+EXE_KER_LAMU2ASSM := SI_ker_lamu2assm
+OBJ_KER_LAMU2ASSM := $(foreach file,$(SRC_KER_LAMU2ASSM),$(OBJDIR)/$(file:.f90=.o))
+SRC_KER_LAMU2ASSM_MPI := SI_ker_lamu2assm_mpi.f90
+EXE_KER_LAMU2ASSM_MPI := SI_ker_lamu2assm_mpi
+OBJ_KER_LAMU2ASSM_MPI := $(foreach file,$(SRC_KER_LAMU2ASSM_MPI),$(OBJDIR)/$(file:.f90=.o))
+
+SRC_KER_KAMU2ASSM_FPP := SI_ker_kamu2assm.F90
+SRC_KER_KAMU2ASSM := SI_ker_kamu2assm.f90
+EXE_KER_KAMU2ASSM := SI_ker_kamu2assm
+OBJ_KER_KAMU2ASSM := $(foreach file,$(SRC_KER_KAMU2ASSM),$(OBJDIR)/$(file:.f90=.o))
+SRC_KER_KAMU2ASSM_MPI := SI_ker_kamu2assm_mpi.f90
+EXE_KER_KAMU2ASSM_MPI := SI_ker_kamu2assm_mpi
+OBJ_KER_KAMU2ASSM_MPI := $(foreach file,$(SRC_KER_KAMU2ASSM_MPI),$(OBJDIR)/$(file:.f90=.o))
+
+SRC_KER_LAMU2VPVS_FPP := SI_ker_lamu2vpvs.F90
+SRC_KER_LAMU2VPVS := SI_ker_lamu2vpvs.f90
+EXE_KER_LAMU2VPVS := SI_ker_lamu2vpvs
+OBJ_KER_LAMU2VPVS := $(foreach file,$(SRC_KER_LAMU2VPVS),$(OBJDIR)/$(file:.f90=.o))
+SRC_KER_LAMU2VPVS_MPI := SI_ker_lamu2vpvs_mpi.f90
+EXE_KER_LAMU2VPVS_MPI := SI_ker_lamu2vpvs_mpi
+OBJ_KER_LAMU2VPVS_MPI := $(foreach file,$(SRC_KER_LAMU2VPVS_MPI),$(OBJDIR)/$(file:.f90=.o))
+
+SRC_KER_LAMU2KAMU_FPP := SI_ker_lamu2kamu.F90
+SRC_KER_LAMU2KAMU := SI_ker_lamu2kamu.f90
+EXE_KER_LAMU2KAMU := SI_ker_lamu2kamu
+OBJ_KER_LAMU2KAMU := $(foreach file,$(SRC_KER_LAMU2KAMU),$(OBJDIR)/$(file:.f90=.o))
+SRC_KER_LAMU2KAMU_MPI := SI_ker_lamu2kamu_mpi.f90
+EXE_KER_LAMU2KAMU_MPI := SI_ker_lamu2kamu_mpi
+OBJ_KER_LAMU2KAMU_MPI := $(foreach file,$(SRC_KER_LAMU2KAMU_MPI),$(OBJDIR)/$(file:.f90=.o))
+
+SRC_KER_VPVS2KAMU_FPP := SI_ker_vpvs2kamu.F90
+SRC_KER_VPVS2KAMU := SI_ker_vpvs2kamu.f90
+EXE_KER_VPVS2KAMU := SI_ker_vpvs2kamu
+OBJ_KER_VPVS2KAMU := $(foreach file,$(SRC_KER_VPVS2KAMU),$(OBJDIR)/$(file:.f90=.o))
+SRC_KER_VPVS2KAMU_MPI := SI_ker_vpvs2kamu_mpi.f90
+EXE_KER_VPVS2KAMU_MPI := SI_ker_vpvs2kamu_mpi
+OBJ_KER_VPVS2KAMU_MPI := $(foreach file,$(SRC_KER_VPVS2KAMU_MPI),$(OBJDIR)/$(file:.f90=.o))
+
+vpath %.F90 $(FPPDIRKER)
+
+#######################################################################
+#                              target                                 #
+#######################################################################
+phony_list := $(phony_list) kernel
+.PHONY: $(phony_list)
+
+kernel: $(BINDIR)/$(EXE_KER_PAIR) $(BINDIR)/$(EXE_KER_PAIR_MPI) \
+         $(BINDIR)/$(EXE_KER_STA)  $(BINDIR)/$(EXE_KER_STA_MPI) \
+	 $(BINDIR)/$(EXE_KER_EQ)  $(BINDIR)/$(EXE_KER_EQ_MPI) \
+         $(BINDIR)/$(EXE_KER_STA_RHO)  $(BINDIR)/$(EXE_KER_STA_RHO_MPI) \
+         $(BINDIR)/$(EXE_KER_STA_LAMU)  $(BINDIR)/$(EXE_KER_STA_LAMU_MPI) \
+        $(BINDIR)/$(EXE_KER2INFO) $(BINDIR)/$(EXE_KER2INFO_MPI) \
+        $(BINDIR)/$(EXE_KER2ASSM) $(BINDIR)/$(EXE_KER2ASSM_MPI) \
+        $(BINDIR)/$(EXE_KER_LAMU2ASSM) $(BINDIR)/$(EXE_KER_LAMU2ASSM_MPI) \
+        $(BINDIR)/$(EXE_KER_KAMU2ASSM) $(BINDIR)/$(EXE_KER_KAMU2ASSM_MPI) \
+        $(BINDIR)/$(EXE_KER_LAMU2VPVS) $(BINDIR)/$(EXE_KER_LAMU2VPVS_MPI) \
+        $(BINDIR)/$(EXE_KER_LAMU2KAMU) $(BINDIR)/$(EXE_KER_LAMU2KAMU_MPI) \
+        $(BINDIR)/$(EXE_KER_VPVS2KAMU) $(BINDIR)/$(EXE_KER_VPVS2KAMU_MPI) \
+
+$(BINDIR)/$(EXE_KER_PAIR): $(OBJ_MOD) $(OBJ_KER_PAIR)
+	$(FC) -o $@ $(OBJ_MOD) $(OBJ_KER_PAIR) $(LDFLAGS)
+$(BINDIR)/$(EXE_KER_PAIR_MPI): $(OBJ_MOD) $(OBJ_KER_PAIR_MPI)
+	$(FC) -o $@ $(OBJ_MOD) $(OBJ_KER_PAIR_MPI) $(LDFLAGS)
+
+$(BINDIR)/$(EXE_KER_STA): $(OBJ_MOD) $(OBJ_KER_STA)
+	$(FC) -o $@ $(OBJ_MOD) $(OBJ_KER_STA) $(LDFLAGS)
+$(BINDIR)/$(EXE_KER_STA_MPI): $(OBJ_MOD) $(OBJ_KER_STA_MPI)
+	$(FC) -o $@ $(OBJ_MOD) $(OBJ_KER_STA_MPI) $(LDFLAGS)
+
+$(BINDIR)/$(EXE_KER_EQ): $(OBJ_MOD) $(OBJ_KER_EQ)
+	$(FC) -o $@ $(OBJ_MOD) $(OBJ_KER_EQ) $(LDFLAGS)
+$(BINDIR)/$(EXE_KER_EQ_MPI): $(OBJ_MOD) $(OBJ_KER_EQ_MPI)
+	$(FC) -o $@ $(OBJ_MOD) $(OBJ_KER_EQ_MPI) $(LDFLAGS)
+
+$(BINDIR)/$(EXE_KER_STA_RHO): $(OBJ_MOD) $(OBJ_KER_STA_RHO)
+	$(FC) -o $@ $(OBJ_MOD) $(OBJ_KER_STA_RHO) $(LDFLAGS)
+$(BINDIR)/$(EXE_KER_STA_RHO_MPI): $(OBJ_MOD) $(OBJ_KER_STA_RHO_MPI)
+	$(FC) -o $@ $(OBJ_MOD) $(OBJ_KER_STA_RHO_MPI) $(LDFLAGS)
+
+$(BINDIR)/$(EXE_KER_STA_LAMU): $(OBJ_MOD) $(OBJ_KER_STA_LAMU)
+	$(FC) -o $@ $(OBJ_MOD) $(OBJ_KER_STA_LAMU) $(LDFLAGS)
+$(BINDIR)/$(EXE_KER_STA_LAMU_MPI): $(OBJ_MOD) $(OBJ_KER_STA_LAMU_MPI)
+	$(FC) -o $@ $(OBJ_MOD) $(OBJ_KER_STA_LAMU_MPI) $(LDFLAGS)
+
+$(BINDIR)/$(EXE_KER2INFO): $(OBJ_MOD) $(OBJ_KER2INFO)
+	$(FC) -o $@ $(OBJ_MOD) $(OBJ_KER2INFO) $(LDFLAGS)
+$(BINDIR)/$(EXE_KER2INFO_MPI): $(OBJ_MOD) $(OBJ_KER2INFO_MPI)
+	$(FC) -o $@ $(OBJ_MOD) $(OBJ_KER2INFO_MPI) $(LDFLAGS)
+
+$(BINDIR)/$(EXE_KER2ASSM): $(OBJ_MOD) $(OBJ_KER2ASSM)
+	$(FC) -o $@ $(OBJ_MOD) $(OBJ_KER2ASSM) $(LDFLAGS)
+$(BINDIR)/$(EXE_KER2ASSM_MPI): $(OBJ_MOD) $(OBJ_KER2ASSM_MPI)
+	$(FC) -o $@ $(OBJ_MOD) $(OBJ_KER2ASSM_MPI) $(LDFLAGS)
+
+$(BINDIR)/$(EXE_KER_LAMU2ASSM): $(OBJ_MOD) $(OBJ_KER_LAMU2ASSM)
+	$(FC) -o $@ $(OBJ_MOD) $(OBJ_KER_LAMU2ASSM) $(LDFLAGS)
+$(BINDIR)/$(EXE_KER_LAMU2ASSM_MPI): $(OBJ_MOD) $(OBJ_KER_LAMU2ASSM_MPI)
+	$(FC) -o $@ $(OBJ_MOD) $(OBJ_KER_LAMU2ASSM_MPI) $(LDFLAGS)
+
+$(BINDIR)/$(EXE_KER_KAMU2ASSM): $(OBJ_MOD) $(OBJ_KER_KAMU2ASSM)
+	$(FC) -o $@ $(OBJ_MOD) $(OBJ_KER_KAMU2ASSM) $(LDFLAGS)
+$(BINDIR)/$(EXE_KER_KAMU2ASSM_MPI): $(OBJ_MOD) $(OBJ_KER_KAMU2ASSM_MPI)
+	$(FC) -o $@ $(OBJ_MOD) $(OBJ_KER_KAMU2ASSM_MPI) $(LDFLAGS)
+
+$(BINDIR)/$(EXE_KER_LAMU2VPVS): $(OBJ_MOD) $(OBJ_KER_LAMU2VPVS)
+	$(FC) -o $@ $(OBJ_MOD) $(OBJ_KER_LAMU2VPVS) $(LDFLAGS)
+$(BINDIR)/$(EXE_KER_LAMU2VPVS_MPI): $(OBJ_MOD) $(OBJ_KER_LAMU2VPVS_MPI)
+	$(FC) -o $@ $(OBJ_MOD) $(OBJ_KER_LAMU2VPVS_MPI) $(LDFLAGS)
+
+$(BINDIR)/$(EXE_KER_LAMU2KAMU): $(OBJ_MOD) $(OBJ_KER_LAMU2KAMU)
+	$(FC) -o $@ $(OBJ_MOD) $(OBJ_KER_LAMU2KAMU) $(LDFLAGS)
+$(BINDIR)/$(EXE_KER_LAMU2KAMU_MPI): $(OBJ_MOD) $(OBJ_KER_LAMU2KAMU_MPI)
+	$(FC) -o $@ $(OBJ_MOD) $(OBJ_KER_LAMU2KAMU_MPI) $(LDFLAGS)
+
+$(BINDIR)/$(EXE_KER_VPVS2KAMU): $(OBJ_MOD) $(OBJ_KER_VPVS2KAMU)
+	$(FC) -o $@ $(OBJ_MOD) $(OBJ_KER_VPVS2KAMU) $(LDFLAGS)
+$(BINDIR)/$(EXE_KER_VPVS2KAMU_MPI): $(OBJ_MOD) $(OBJ_KER_VPVS2KAMU_MPI)
+	$(FC) -o $@ $(OBJ_MOD) $(OBJ_KER_VPVS2KAMU_MPI) $(LDFLAGS)
+
+#######################################################################
+#                        subffixes rules                              #
+#######################################################################
+$(SRC_KER_PAIR_MPI): $(SRC_KER_PAIR_FPP)
+	$(FPP) $(FPPINCS) $(FPPFLAGS) -DKernelMPI $< > $(SRCDIR)/$(@F)
+$(SRC_KER_STA_MPI): $(SRC_KER_STA_FPP)
+	$(FPP) $(FPPINCS) $(FPPFLAGS) -DKernelMPI $< > $(SRCDIR)/$(@F)
+$(SRC_KER_EQ_MPI): $(SRC_KER_EQ_FPP)
+	$(FPP) $(FPPINCS) $(FPPFLAGS) -DKernelMPI $< > $(SRCDIR)/$(@F)
+$(SRC_KER_STA_RHO_MPI): $(SRC_KER_STA_RHO_FPP)
+	$(FPP) $(FPPINCS) $(FPPFLAGS) -DKernelMPI $< > $(SRCDIR)/$(@F)
+$(SRC_KER_STA_LAMU_MPI): $(SRC_KER_STA_LAMU_FPP)
+	$(FPP) $(FPPINCS) $(FPPFLAGS) -DKernelMPI $< > $(SRCDIR)/$(@F)
+$(SRC_KER2INFO_MPI): $(SRC_KER2INFO_FPP)
+	$(FPP) $(FPPINCS) $(FPPFLAGS) -DKernelInfoMPI $< > $(SRCDIR)/$(@F)
+$(SRC_KER2ASSM_MPI): $(SRC_KER2ASSM_FPP)
+	$(FPP) $(FPPINCS) $(FPPFLAGS) -DKernelAssmMPI $< > $(SRCDIR)/$(@F)
+$(SRC_KER_LAMU2ASSM_MPI): $(SRC_KER_LAMU2ASSM_FPP)
+	$(FPP) $(FPPINCS) $(FPPFLAGS) -DKernelAssmMPI $< > $(SRCDIR)/$(@F)
+$(SRC_KER_KAMU2ASSM_MPI): $(SRC_KER_KAMU2ASSM_FPP)
+	$(FPP) $(FPPINCS) $(FPPFLAGS) -DKernelAssmMPI $< > $(SRCDIR)/$(@F)
+$(SRC_KER_LAMU2VPVS_MPI): $(SRC_KER_LAMU2VPVS_FPP)
+	$(FPP) $(FPPINCS) $(FPPFLAGS) -DKernelMPI $< > $(SRCDIR)/$(@F)
+$(SRC_KER_LAMU2KAMU_MPI): $(SRC_KER_LAMU2KAMU_FPP)
+	$(FPP) $(FPPINCS) $(FPPFLAGS) -DKernelMPI $< > $(SRCDIR)/$(@F)
+$(SRC_KER_VPVS2KAMU_MPI): $(SRC_KER_VPVS2KAMU_FPP)
+	$(FPP) $(FPPINCS) $(FPPFLAGS) -DKernelMPI $< > $(SRCDIR)/$(@F)
+
+# vim:ft=make:ts=4:sw=4:nu:et:ai:

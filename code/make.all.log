@@ -1,0 +1,4 @@
+/usr/bin/cpp -P -traditional -I./srcF -DSTATIC -DUSEPML -DSrcSmooth -DSrcSurface -DCondFreeTIMG -DCondFreeVLOW  ./srcF/mod_constants.F90 > ./src/mod_constants.f90
+/opt/mpich/p4-intel/bin/mpif90 -O3 -xW -ftz -align records -no-prec-div -unroll1 -ipo -c -w95 -warn all -zero -module ./OBJ -I/opt/netcdf/intel-10.1/include  ./src/mod_constants.f90 -o OBJ/mod_constants.o
+make: /opt/mpich/p4-intel/bin/mpif90: No such file or directory
+make: *** [OBJ/mod_constants.o] Error 1

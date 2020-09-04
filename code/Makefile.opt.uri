@@ -1,0 +1,46 @@
+#******************************************************************************#
+#*  Compiler setting on seawolf.gso.uri.edu (AMD opteron, CentOS 4.6 x86_64)  *#
+#*                                                                            *#
+#*            Author: Wei ZHANG     Email: zhangwei.zw@gmail.com              *#
+#*                       Copyright (C) 2008 Wei ZHANG                         *#
+#******************************************************************************#
+
+# $Date: 2009-01-14 21:13:32 -0500 (Wed, 14 Jan 2009) $
+# $Revision: 52 $
+# $LastChangedBy: zhangw $
+
+COMPILER := Intel
+#COMPILER := PGI
+
+#######################################################################
+#                        Intel compiler                               #
+#######################################################################
+ifeq "$(COMPILER)" "Intel"
+FC     :=  /opt/mpich/bin/mpif90
+NETCDF :=  /opt/netcdf/intel-10.1
+
+LDFLAGS := -L$(NETCDF)/lib -lnetcdf $(if $(STATIC),-Bstatic -static,)
+FFLAGS := -c -w95 -warn all -zero -module $(OBJDIR) -I$(NETCDF)/include \
+          $(if $(WithOMP),-openmp -openmp_report2,)
+FFLAGSMP := -mp1 -unroll0 -ip-no-inlining $(FFLAGS)
+
+ifeq "$(DEBUG)" "ON"
+  FFLAGS   := $(if $(WithOMP),-O0,-g -debug extended -traceback -fp) $(FFLAGS)
+  FFLAGSMP := $(if $(WithOMP),-O0,-g -debug extended -traceback -fp) $(FFLAGSMP)
+  #FFLAGS   := -check bounds -check uninit -ftrapuv -fpe0 $(FFLAGS)
+else
+
+FFLAGS   := -O3 -xW -ftz -align records -no-prec-div -unroll1 -ipo $(FFLAGS)
+FFLAGSMP := -O3 $(FFLAGSMP)
+LDFLAGS  := -ipo $(LDFLAGS)
+endif #DEBUG
+
+endif #Intel
+#######################################################################
+#                          PGI compiler                               #
+#######################################################################
+ifeq "$(COMPILER)" "PGI"
+$(error "Please set FC and NETCDF for $(COMPILER) in Makefile.$(WHEREAMI)")
+endif
+
+# vim:ft=make:ts=4:sw=4:nu:et:ai:

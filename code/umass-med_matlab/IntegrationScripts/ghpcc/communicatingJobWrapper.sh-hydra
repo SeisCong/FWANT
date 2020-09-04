@@ -1,0 +1,57 @@
+#!/bin/sh
+# This wrapper script is intended to be submitted to LSF to support
+# communicating jobs.
+# 
+# This script uses the following environment variables set by the submit MATLAB code:
+# MDCE_MATLAB_EXE     - the MATLAB executable to use
+# MDCE_MATLAB_ARGS    - the MATLAB args to use
+#
+# The following environment variables are forwarded through mpiexec:
+# MDCE_DECODE_FUNCTION     - the decode function to use
+# MDCE_STORAGE_LOCATION    - used by decode function 
+# MDCE_STORAGE_CONSTRUCTOR - used by decode function 
+# MDCE_JOB_LOCATION        - used by decode function 
+
+# Copyright 2006-2014 The MathWorks, Inc.
+
+# communicating jobs for using mpich2-1.4.1p1 (Hydra)
+
+# Only saw this with the Hydra version, but to avoid this, will load a later version of zlib
+# 
+#    /share/pkg/mpich2/1.4.1p1/bin/mpiexec "/share/pkg/matlab/R2017a/bin/worker" -parallel
+#    /share/pkg/mpich2/1.4.1p1/bin/mpiexec: /lib64/libz.so.1: version `ZLIB_1.2.3.3' not found
+#                          (required by /share/pkg/matlab/R2017a/bin/glnxa64/libxml2.so.2) 
+#
+module load zlib/1.2.3.9
+
+MPI_ROOT=/share/pkg/mpich2/1.4.1p1
+MPILIB=$MPI_ROOT/lib/
+MPIEXEC=$MPI_ROOT/bin/mpiexec
+MPIEXEC_CODE=0
+export TZ="America/New_York"
+
+runMpiexec() {
+    # This avoids the need for mpiLibConf.m
+    export LD_LIBRARY_PATH=${MPILIB}:$LD_LIBRARY_PATH
+
+    if [ "X${MDCE_DEBUG}X" == "XtrueX" ]; then
+        MPI_VERBOSE=-v
+    else
+        MPI_VERBOSE=
+    fi
+
+    CMD="${MPIEXEC} ${MPI_VERBOSE} \"${MDCE_MATLAB_EXE}\" ${MDCE_MATLAB_ARGS}"
+
+    # As a debug stage: echo the command line...
+    echo $CMD
+
+    # ...and then execute it
+    eval $CMD
+
+    MPIEXEC_CODE=${?}
+}
+
+runMpiexec
+
+echo "Exiting with code: ${MPIEXEC_CODE}"
+exit ${MPIEXEC_CODE}

@@ -1,0 +1,61 @@
+
+solving with different daming ...
+loc st ev smooth damp= 0 0 0 2 2
+ ----------------------------------------------------
+  mode:
+      1 = Simple damping;
+   file list of G matrix, data and weighting=
+  inv_Gd_list_am_sne_low.txt_joint.ori
+   file name of smoothing operator=
+  ../../block.160x106x25.1x1x1.1x1x1.smooth1th.dat
+   # of inverted structure components
+                     2
+   # of station terms per measurement and weighting
+                     1  0.000000000000000E+000
+   # of event terms per measurement and weighting
+                     1  0.000000000000000E+000
+   # of location terms per measurement and weighting
+                     3  0.000000000000000E+000
+  dampping and smoothing
+   2.00000000000000        2.00000000000000     
+   kernel and measurement threshold
+    5.000000000000000E-003   7.50000000000000     
+   # of cmp, sta, evt, loc per data
+                     2                     1                     1
+                     3
+   # of dat, mval, xval, size
+       33940      848000      848838     1684138
+   # of row, band, nel
+     1684138       50537             408532029
+ allocating variables ...
+ lsqr_init ...
+ lsqr_init: finished ...
+     rhs_min,rhs_max
+ -2.0358976E-02   2.495271    
+     rhs_min_weig,rhs_max_weig
+ -8.8517360E-02   8.307336    
+   ---- data, station and event ----
+     max_row,mrow=               1684138                 33940
+     max_nel,nel=             408532029             404477751
+   ---- data, station and event + dampping ----
+     max_row,mrow=               1684138                882778
+     max_nel,nel=             408532029             405326589
+   ---- data, station and event + dampping + smoothing ----
+     max_row,mrow=               1684138               1684138
+     max_nel,nel=             408532029             408532029
+     begin solving
+                848838               1684138             408532029
+iter., test1,test2:        262    1684138     848838  408532029   0.3758D-03   0.9515D-07   0.2233D+02
+     finish solving
+     exporting ...
+     evaluating (writing summary) ...
+ damping, smoothing, data_var_reduc, model_norm
+   2.00000000000000        2.00000000000000        99.6775208248687     
+  9.877415980955210E-003
+ 
+     ending ...
+ ----------------------------------------------------
+
+real	6m58.962s
+user	5m10.933s
+sys	1m47.453s

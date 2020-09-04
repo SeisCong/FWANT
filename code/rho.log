@@ -1,0 +1,111 @@
+/usr/bin/cpp  -P -traditional -I./srcF -DSTATIC -DSrcSurface -DCondFreeTIMG -DCondFreeVLOW  -DKernelMPI ./srcF.kernel/SI_ker_sta_rho.F90 > ./src/SI_ker_sta_rho_mpi.f90
+/opt/mpich/p4-intel/bin/mpif90 -O3 -xW -ftz -align records -no-prec-div -unroll1 -ipo -c -w95 -warn all -zero -module ./OBJ -I/opt/netcdf/intel-10.1/include  ./src/SI_ker_sta_rho_mpi.f90 -o OBJ/SI_ker_sta_rho_mpi.o
+fortcom: Info: ./src/SI_ker_sta_rho_mpi.f90, line 94: This variable has not been used.   [UDBPR]
+real(SP),dimension(:,:,:,:),pointer :: Udapr,Udbpr
+---------------------------------------------^
+/opt/mpich/p4-intel/bin/mpif90 -o bin/SI_ker_sta_rho_mpi ./OBJ/mod_constants.o ./OBJ/mod_math.o ./OBJ/mod_string.o ./OBJ/mod_nfseis.o ./OBJ/mod_para.o ./OBJ/mod_mpi.o ./OBJ/mod_grid.o ./OBJ/mod_io.o ./OBJ/mod_media.o ./OBJ/mod_macdrp.o ./OBJ/mod_src.o ./OBJ/mod_custom.o ./OBJ/SI_ker_sta_rho_mpi.o -ipo -L/opt/netcdf/intel-10.1/lib -lnetcdf -Bstatic -static
+ipo: remark #11000: performing multi-file optimizations
+ipo: remark #11005: generating object file /tmp/ipo_ifortXgEsYi.o
+./src/SI_ker_sta_rho_mpi.f90(255): (col. 6) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(260): (col. 1) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(260): (col. 1) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(320): (col. 9) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(886): (col. 30) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(887): (col. 30) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(888): (col. 24) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(889): (col. 24) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(890): (col. 24) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(920): (col. 20) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(921): (col. 21) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(922): (col. 21) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(923): (col. 21) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(924): (col. 21) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(925): (col. 21) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(926): (col. 21) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(927): (col. 21) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(928): (col. 21) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(933): (col. 31) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(934): (col. 31) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(935): (col. 31) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(937): (col. 31) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(938): (col. 31) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(940): (col. 31) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(941): (col. 31) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(942): (col. 31) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(943): (col. 31) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(944): (col. 31) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(945): (col. 31) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(947): (col. 27) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(947): (col. 34) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(948): (col. 23) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(949): (col. 23) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(950): (col. 23) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(951): (col. 23) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(952): (col. 23) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(953): (col. 23) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(954): (col. 23) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(955): (col. 23) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(956): (col. 23) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(957): (col. 23) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(958): (col. 23) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(959): (col. 23) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(1214): (col. 3) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(1215): (col. 3) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(1216): (col. 3) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(1217): (col. 3) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(1514): (col. 1) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(1082): (col. 31) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(1083): (col. 31) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(1084): (col. 31) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(1051): (col. 31) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(1052): (col. 31) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(1053): (col. 31) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(1020): (col. 31) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(1021): (col. 31) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(1022): (col. 31) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(907): (col. 28) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(908): (col. 28) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(909): (col. 30) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(910): (col. 30) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(911): (col. 25) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(912): (col. 25) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(913): (col. 25) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(914): (col. 25) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(915): (col. 25) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(979): (col. 31) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(980): (col. 31) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(981): (col. 31) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(983): (col. 31) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(984): (col. 31) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(986): (col. 31) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(987): (col. 31) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(988): (col. 31) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(989): (col. 31) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(990): (col. 31) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(991): (col. 31) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(1693): (col. 4) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(1707): (col. 9) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(1707): (col. 9) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(1707): (col. 9) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(1708): (col. 4) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(1719): (col. 4) remark: LOOP WAS VECTORIZED.
+./src/SI_ker_sta_rho_mpi.f90(1730): (col. 4) remark: LOOP WAS VECTORIZED.
+./src/mod_io.f90(201): (col. 7) remark: LOOP WAS VECTORIZED.
+./src/mod_io.f90(201): (col. 17) remark: LOOP WAS VECTORIZED.
+./src/mod_io.f90(201): (col. 32) remark: LOOP WAS VECTORIZED.
+./src/mod_io.f90(201): (col. 47) remark: LOOP WAS VECTORIZED.
+./src/mod_io.f90(201): (col. 17) remark: LOOP WAS VECTORIZED.
+./src/mod_io.f90(201): (col. 32) remark: LOOP WAS VECTORIZED.
+./src/mod_io.f90(201): (col. 47) remark: LOOP WAS VECTORIZED.
+./src/mod_io.f90(201): (col. 62) remark: LOOP WAS VECTORIZED.
+./src/mod_io.f90(219): (col. 33) remark: LOOP WAS VECTORIZED.
+./src/mod_io.f90(220): (col. 32) remark: LOOP WAS VECTORIZED.
+./src/mod_io.f90(224): (col. 29) remark: LOOP WAS VECTORIZED.
+./src/mod_io.f90(228): (col. 29) remark: LOOP WAS VECTORIZED.
+./src/mod_io.f90(155): (col. 34) remark: LOOP WAS VECTORIZED.
+./src/mod_io.f90(156): (col. 34) remark: LOOP WAS VECTORIZED.
+./src/mod_io.f90(157): (col. 34) remark: LOOP WAS VECTORIZED.
+/opt/mpich/p4-intel/lib/libmpich.a(p4_secure.o)(.text+0x91): In function `start_slave':
+: warning: Using 'getpwuid' in statically linked applications requires at runtime the shared libraries from the glibc version used for linking
+/opt/mpich/p4-intel/lib/libmpich.a(chnodename.o)(.text+0x2a): In function `MPID_Node_name':
+: warning: Using 'gethostbyname' in statically linked applications requires at runtime the shared libraries from the glibc version used for linking

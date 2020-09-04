@@ -1,0 +1,70 @@
+%generate anomaly bodies
+clear all;
+mx=160;
+my=106;
+mz=25;
+fnm_blk='../../masterfiles/block.160x106x25.1x1x1.1x1x1.nc';
+
+X=nc_varget(fnm_blk,'x');
+Y=nc_varget(fnm_blk,'y');
+Z=nc_varget(fnm_blk,'z');
+
+x=90-reshape(X,[mx,my,mz])/pi*180;
+y=reshape(Y,[mx,my,mz])/pi*180;
+R=reshape(Z,[mx,my,mz]);
+z=(6371-reshape(Z,[mx,my,mz])/1e3);
+
+X=reshape(X,[mx,my,mz]);
+Y=reshape(Y,[mx,my,mz]);
+% convert to Cartesian coord
+[yc,xc,zc]=sph2cart(Y,pi/2-X,R);
+%%
+% vout=inv_make_anomaly('crust_uppermantle_sandwich.txt',mx,my,mz,[3 157 3 103 22 24 0.1],...
+%     [3 157 3 103 19 21 -0.1],[3 157 3 103 16 17 0.1]);
+% 
+% vck=reshape(vout,[mx my mz]);
+% 
+% vplot=squeeze(vck(80,:,:)*100);
+% 
+% pcolor(squeeze(y(1,:,1))'-360,squeeze(z(1,1,:))',vplot');
+% colormap('jetwr');
+% caxis([-10 10]);
+% set(gca,'YDir','reverse')
+% colorbar;
+% ylim([5 100]);
+
+%%
+% vout=inv_make_anomaly('am_sne_low.txt',mx,my,mz,[52 75 10 30 11 17 -0.1],...
+%     [45 115 25 85 9 13 -0.1]);
+% 
+% vck=reshape(vout,[mx my mz]);
+% nx=64; ny=50;
+% clear vplot;
+% vplot=squeeze(vck(nx,:,:)*100);
+% %vplot=squeeze(vck(:,ny,:)*100);
+% 
+% pcolor(squeeze(y(1,:,1))'-360,squeeze(z(1,1,:))',vplot');
+% %pcolor(squeeze(x(:,1,1))',squeeze(z(1,1,:))',vplot');
+% colormap('jetwr');
+% caxis([-10 10]);
+% set(gca,'YDir','reverse')
+% colorbar;
+% ylim([5 100]);
+
+%%
+vout=inv_make_anomaly('amlow_wqhigh.txt',mx,my,mz,[52 75 10 30 11 17 -0.1],...
+    [25 47 5 25 11 17 0.1]);
+
+vck=reshape(vout,[mx my mz]);
+nx=64; ny=20;
+clear vplot;
+%vplot=squeeze(vck(nx,:,:)*100);
+vplot=squeeze(vck(:,ny,:)*100);
+
+%pcolor(squeeze(y(1,:,1))'-360,squeeze(z(1,1,:))',vplot');
+pcolor(squeeze(x(:,1,1))',squeeze(z(1,1,:))',vplot');
+colormap('jetwr');
+caxis([-10 10]);
+set(gca,'YDir','reverse')
+colorbar;
+ylim([5 100]);
