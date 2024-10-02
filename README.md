@@ -1,5 +1,5 @@
 # Full Waveform Ambient Noise Tomography Packages (FWANT)
-This code package was orignially developed by Dr. Yang Shen and his seismology groups at the University of Rhode Island. The package was then modified by Dr. Haiying Gao and by Dr. Cong Li at UMass Amherst. The codes will be maintained by both URI and UMass Amherst seismology groups in the future.
+This code package was orignially developed by Dr. Yang Shen and his seismology groups at the University of Rhode Island. The package was then updated by Dr. Haiying Gao and by Dr. Cong Li at UMass Amherst. The codes will be maintained by both URI and UMass Amherst seismology groups in the future.
 
 If you use this package, please consider the following citations:
 
